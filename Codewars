@@ -1,0 +1,12 @@
+def digital_root(n):
+    s = 0 # s -> running sum
+    while n > 0:
+        # take each digit from the number by running mod 10 (ones position in base 10 number)
+        s += int(n%10)
+        # reduce the number by a factor of 10 to remove the ones position
+        n = int(n/10)
+    if s >= 10: 
+        # if the num is greater than or equal to 10 recursively call self
+        return digital_root(s)
+    # return the sum
+    return s
