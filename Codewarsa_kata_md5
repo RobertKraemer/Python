@@ -1,0 +1,13 @@
+from hashlib import md5
+from itertools import product
+
+def crack(hash):
+    for bs in map(bytes, product(b'0123456789a', repeat=5)): 
+        # we can extend b' also with letters
+        if md5(bytes(bs)).hexdigest() == hash:
+            return bs.decode()
+
+
+
+print(crack("86aa400b65433b608a9db30070ec60cd"))
+print(crack('9db13701b7db8586431d22eb0a8eb23c')) # letter a also integraded if we delete from b' the a this will output None
